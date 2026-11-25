@@ -28,11 +28,10 @@
   <button onclick="login()">Sign in with Discord</button>
 
   <script>
-    const client = supabase.createClient(
-      NEXT_PUBLIC_SUPABASE_URL=https://zrnrbvwgxmbfcklzbjuo.supabase.co
-      NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=sb_publishable_SnqjrNH7-8yPD8Mg0C4Qag_YPph89dW
-    );
-
+const client = supabase.createClient(
+  "https://zrnrbvwgxmbfcklzbjuo.supabase.co",
+  "sb_publishable_SnqjrNH7-8yPD8Mg0C4Qag_YPph89dW"
+);
     async function login() {
       const { error } = await client.auth.signInWithOAuth({
         provider: "discord"
