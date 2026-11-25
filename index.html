@@ -34,7 +34,10 @@ const client = supabase.createClient(
 );
     async function login() {
       const { error } = await client.auth.signInWithOAuth({
-        provider: "discord"
+        provider: "discord",
+options: {
+  redirectTo: "https://ivanlpz562-del.github.io/license-manager/"
+}
       });
       if (error) alert(error.message);
     }
