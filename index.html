@@ -27,7 +27,7 @@
   <p>Customer Portal</p>
   <button onclick="login()">Sign in with Discord</button>
 <p id="login-status"></p>
-  <script>
+  <script><button onclick="logout()">Sign out</button>
 const client = supabase.createClient(
   "https://zrnrbvwgxmbfcklzbjuo.supabase.co",
   "sb_publishable_SnqjrNH7-8yPD8Mg0C4Qag_YPph89dW"
@@ -43,7 +43,10 @@ options: {
     }client.auth.onAuthStateChange((event, session) => {
   document.getElementById("login-status").textContent =
     session ? "Successfully signed in with Discord!" : "";
-});
+});async function logout() {
+  const { error } = await client.auth.signOut();
+  if (error) alert(error.message);
+}
   </script>
 </body>
 </html>
