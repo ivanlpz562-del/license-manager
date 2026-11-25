@@ -26,7 +26,7 @@
   <h1>LICENSE MANAGER</h1>
   <p>Customer Portal</p>
   <button onclick="login()">Sign in with Discord</button>
-
+<p id="login-status"></p>
   <script>
 const client = supabase.createClient(
   "https://zrnrbvwgxmbfcklzbjuo.supabase.co",
@@ -40,7 +40,10 @@ options: {
 }
       });
       if (error) alert(error.message);
-    }
+    }client.auth.onAuthStateChange((event, session) => {
+  document.getElementById("login-status").textContent =
+    session ? "Successfully signed in with Discord!" : "";
+});
   </script>
 </body>
 </html>
